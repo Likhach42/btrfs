@@ -9,6 +9,7 @@ jobs:
   cmake:
     runs-on: msvc-wine
     container:
+      image: ghcr.io/microsoft/wine:latest  # Specify the correct image here
       volumes:
         - /var/run/pcscd/pcscd.comm:/var/run/pcscd/pcscd.comm
 
