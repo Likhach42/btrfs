@@ -7,13 +7,14 @@ env:
 
 jobs:
   cmake:
-    runs-on: msvc-wine
-    container:
-      image: ghcr.io/microsoft/wine:latest  # Specify the correct image here
-      volumes:
-        - /var/run/pcscd/pcscd.comm:/var/run/pcscd/pcscd.comm
-
+    runs-on: ubuntu-latest  # Change to use Ubuntu instead of msvc-wine
     steps:
+      - name: Set up Wine
+        run: |
+          sudo dpkg --add-architecture i386
+          sudo apt update
+          sudo apt install -y wine64 wine32
+
       - name: Set short SHA for use in the build
         run: echo "SHORT_SHA=$(echo ${{ github.sha }} | cut -c1-8)" >> $GITHUB_ENV
 
