@@ -14,7 +14,6 @@ jobs:
           sudo dpkg --add-architecture i386
           sudo apt update
           sudo apt install -y wine64 wine32
-
       - name: Set short SHA for use in the build
         run: echo "SHORT_SHA=$(echo ${{ github.sha }} | cut -c1-8)" >> $GITHUB_ENV
 
@@ -30,15 +29,15 @@ jobs:
           mkdir -p build/release/{amd64,x86,aarch64,arm}
           mkdir -p build/pdb/{debug,release}/{amd64,x86,aarch64,arm}
 
-     - name: Build for amd64 debug
-          run: |
-           cmake -DCMAKE_TOOLCHAIN_FILE=msvc-amd64.cmake \
-              -DCMAKE_BUILD_TYPE=Debug \
-              -DWITH_TEST=OFF \
-              -DCMAKE_C_COMPILER=/opt/wine/bin/winegcc \
-              -DCMAKE_CXX_COMPILER=/opt/wine/bin/wineg++ \
-              -S ${SHORT_SHA} \
-              -B build/debug/amd64 && cmake --build build/debug/amd64 --parallel $(nproc)
+      - name: Build for amd64 debug
+        run: |
+          cmake -DCMAKE_TOOLCHAIN_FILE=msvc-amd64.cmake \
+            -DCMAKE_BUILD_TYPE=Debug \
+            -DWITH_TEST=OFF \
+            -DCMAKE_C_COMPILER=/opt/wine/bin/winegcc \
+            -DCMAKE_CXX_COMPILER=/opt/wine/bin/wineg++ \
+            -S ${SHORT_SHA} \
+            -B build/debug/amd64 && cmake --build build/debug/amd64 --parallel $(nproc)
 
       - name: Build for x86 debug
         run: cmake -DCMAKE_TOOLCHAIN_FILE=msvc-x86.cmake -DCMAKE_BUILD_TYPE=Debug -DWITH_TEST=OFF -S ${SHORT_SHA} -B build/debug/x86 && cmake --build build/debug/x86 --parallel $(nproc)
