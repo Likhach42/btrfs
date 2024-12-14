@@ -198,7 +198,7 @@ to work:
 The -p and -c flags are as `btrfs send` on Linux. You can specify any number of
 clone subvolumes.
 
-* `rundll32.exe shellbtrfs.dll,RecvSubvol <stream file> <destination>`
+* `rundll32.exe shellbtrfs.dll,RecvSubvol <stream file> <destination>` .
 
 * `rundll32.exe shellbtrfs.dll,StartScrub <drive>`
 
