@@ -5,9 +5,10 @@ env:
 jobs:
   cmake:
     runs-on: msvc-wine
-    container: madduci/docker-wine-msv
-    volumes:
-      - /var/run/pcscd/pcscd.comm:/var/run/pcscd/pcscd.comm
+    container:
+      image: madduci/docker-wine-msvc # Используйте `image:` для указания имени
+      volumes:
+        - /var/run/pcscd/pcscd.comm:/var/run/pcscd/pcscd.comm
     steps:
       - run: echo "SHORT_SHA=`echo ${{ github.sha }} | cut -c1-8`" >> $GITHUB_ENV
       - run: git clone --recurse-submodules -j`nproc` ${{ github.server_url }}/${{ github.repository }} ${SHORT_SHA}
