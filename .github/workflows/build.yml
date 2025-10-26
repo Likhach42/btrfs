@@ -5,7 +5,7 @@ env:
 jobs:
   cmake:
     runs-on: msvc-wine
-    container: ubuntu-latest
+    container: madduci/docker-wine-msv
       volumes:
         - /var/run/pcscd/pcscd.comm:/var/run/pcscd/pcscd.comm
     steps:
