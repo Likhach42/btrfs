@@ -236,6 +236,7 @@ set(SHELLEXT_SRC_FILES src/shellext/balance.cpp
     src/shellext/factory.cpp
     src/shellext/iconoverlay.cpp
     src/shellext/main.cpp
+    src/shellext/mappings.cpp
     src/shellext/mountmgr.cpp
     src/shellext/propsheet.cpp
     src/shellext/recv.cpp
@@ -256,7 +257,7 @@ if(CMAKE_SYSTEM_PROCESSOR STREQUAL "x86_64" OR CMAKE_SYSTEM_PROCESSOR STREQUAL "
     endif()
 endif()
 
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_VISIBILITY_PRESET hidden)
 
